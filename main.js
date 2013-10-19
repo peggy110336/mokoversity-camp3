@@ -1,9 +1,10 @@
-var gameModule =function(){
+var gameModule =(function(){
 
-	function start()
-	{
-	 (function()
-	 {	
+	var timeoutover,
+	    counter=0;
+
+	function start(){
+	 
 		var canvas = document.getElementById('game'),
 			ctx = canvas.getContext('2d'),
 			ballx = Math.floor(Math.random() * 300),
@@ -18,6 +19,18 @@ var gameModule =function(){
 		ctx.arc(ballx,bally,ballr,0,Math.PI * 2,true);
 		ctx.fill();
 
-	 })  ();
-	}
-}
+		if(counter>=10){
+
+		}else{
+				timeoutover = setTimeout(start,1000);
+				counter = counter+1;
+				console.log("Counter = "+counter);
+			}
+	 }
+	 	return{
+				start : start
+		}
+	
+})();
+
+gameModule.start();
