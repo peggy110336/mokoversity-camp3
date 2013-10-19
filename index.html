@@ -4,7 +4,9 @@
 <head>
 	<title></title>
 </head>
+
 <body>
+
 <nav class="navbar navbar-default" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
@@ -59,8 +61,21 @@
 <div id="score"></div>
 
 <div class="row"></div>
-	<div class="col-md-2">HI!</div>
-  	<div class="col-md-10">BYE!</div>
+	<div class="col-md-12"><canvas id="game"></canvas></div>
+	<script>
+	var canvas = document.getElementById('game');
+	var ctx = canvas.getContext('2d');
+
+	canvas.width=480;
+	canvas.height=320;
+
+	ctx.fillStyle='Black';
+	ctx.beginPath();
+	ctx.arc(100,150,50,0,Math.PI * 2,true);
+	ctx.fill();
+	</script>
+  	
 
 </body>
+
 </html>
