@@ -32,5 +32,4 @@ var gameModule =(function(){
 		}
 	
 })();
-
 gameModule.start();
