@@ -36,10 +36,11 @@ var gameModule =(function(){
 
 	 return{
 				start : start
-				gameModule : gameover
+				
 		}
 	
 })();
 
 gameModule.start();
-gameModule.gameover();
+
+
