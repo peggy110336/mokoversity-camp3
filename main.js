@@ -21,15 +21,17 @@ var gameModule =(function(){
 
 		if(counter>=10){
 
-		}else{
+		}
+		else{
 				timeoutover = setTimeout(start,1000);
 				counter = counter+1;
 				console.log("Counter = "+counter);
 			}
 	 }
-	 	return{
+	 return{
 				start : start
 		}
 	
 })();
+
 gameModule.start();
