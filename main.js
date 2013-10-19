@@ -14,7 +14,7 @@ var gameModule =(function(){
 		canvas.width=480;
 		canvas.height=320;
 
-		ctx.fillStyle='Black';
+		ctx.fillStyle='Red';
 		ctx.beginPath();
 		ctx.arc(ballx,bally,ballr,0,Math.PI * 2,true);
 		ctx.fill();
@@ -42,5 +42,6 @@ var gameModule =(function(){
 })();
 
 gameModule.start();
+
 
 
