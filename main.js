@@ -25,13 +25,21 @@ var gameModule =(function(){
 		else{
 				timeoutover = setTimeout(start,1000);
 				counter = counter+1;
-				console.log("Counter = "+counter);
+				
 			}
 	 }
+
+	 function gameover(){
+
+	 		console.log("Counter = "+counter);
+	 }
+
 	 return{
 				start : start
+				gameModule : gameover
 		}
 	
 })();
 
 gameModule.start();
+gameModule.gameover();
