@@ -3,7 +3,19 @@ var gameModule =(function(){
 	var timeoutover,
 	    counter=0;
 
+	function touchEvent(evt){
+		var X = evt.clientX;
+			Y = evt.clientY;
+
+		console.log("Clicked : "+X+" , "+Y);
+	}
+
 	function start(){
+		document.getElementById("main").addEventListener("click",touchEvent,false);
+		startgame();
+	}
+
+	function startgame(){
 	 
 		var canvas = document.getElementById('game'),
 			ctx = canvas.getContext('2d'),
@@ -14,7 +26,7 @@ var gameModule =(function(){
 		canvas.width=480;
 		canvas.height=320;
 
-		ctx.fillStyle=colors[counter % length];
+		ctx.fillStyle="Red";
 		ctx.beginPath();
 		ctx.arc(ballx,bally,ballr,0,Math.PI * 2,true);
 		ctx.fill();
