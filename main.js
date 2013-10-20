@@ -5,9 +5,8 @@ var gameModule =(function(){
 	    ballx,
 	    bally,
 	    ballr,
-	    Scores=0;
-
-	var colors = ['#ff0000', '#0000ff', 'yellow'];
+	    Scores=0,
+		colors = ['#ff0000', '#0000ff', 'yellow'],
    		length = colors.length;
 
 	function touchEvent(evt){
@@ -32,6 +31,7 @@ var gameModule =(function(){
 	 
 		var canvas = document.getElementById('game'),
 			ctx = canvas.getContext('2d');
+			
 			ballx = Math.floor(Math.random() * 300);
 			bally = Math.floor(Math.random() * 500);
 			ballr = Math.floor(Math.random() * 100);
