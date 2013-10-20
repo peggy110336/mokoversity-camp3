@@ -10,7 +10,6 @@ exports.list = function(req, res){
 };
 
 exports.save = function(req, res){
-	
   scpre.push(reg.query.s);
   console.log("Your Score : " + score);
 };
