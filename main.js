@@ -54,6 +54,7 @@ var gameModule = (function (document) {
     }
 
     function start() {
+    	Scores = 0;
         document.getElementById("main").addEventListener("click", touchEvent, false);
         startgame();
     }
