@@ -1,6 +1,6 @@
 /*jslint browser: true, devel: true, closure: true */
 
-var gameModule = (function (document) {
+var gameModule = (function (document, $) {
 
     "use strict";
 
@@ -8,12 +8,15 @@ var gameModule = (function (document) {
         ballx,
         bally,
         ballr,
-        Scores = 0,
+        Scores,
         colors = ['#ff0000', '#0000ff', 'yellow'],
         length = colors.length;
 
     function gameover() {
         console.log("Final Scores = " + Scores);
+
+        var api = "http://127.0.0.1:3000/index.html" + score;
+        jQuery.ajax({url:api});
     }
 
     function touchEvent(evt) {
@@ -62,6 +65,6 @@ var gameModule = (function (document) {
     return {
         start : start
     };
-}(document));
+}(document ,$));
 
 gameModule.start();
