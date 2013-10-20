@@ -1,72 +1,70 @@
-var gameModule =(function(){
+/*jslint browser: true, devel: true, closure: true */
 
-	var timeoutover,
-	    counter=0,
-	    ballx,
-	    bally,
-	    ballr,
-	    Scores=0,
-		colors = ['#ff0000', '#0000ff', 'yellow'],
-   		length = colors.length;
+var gameModule = (function (document, $) {
 
-	function touchEvent(evt){
-		var X = evt.clientX;
-			Y = evt.clientY;
-			tmp = (ballx - X)*(ballx - X)+(bally-Y)*(bally-Y);
+    "use strict";
 
-		console.log("Clicked : "+X+" , "+Y);
+    var counter = 0,
+        ballx,
+        bally,
+        ballr,
+        Scores,
+        colors = ['#ff0000', '#0000ff', 'yellow'],
+        length = colors.length;
 
-		if(tmp<ballr*ballr){
-			Scores = Scores + (180-ballr);
-			console.log("Good Hit! Your Scores : "+Scores);
-		}
-	}
+    function gameover() {
+        console.log("Final Scores = " + Scores);
 
-	function start(){
-		document.getElementById("main").addEventListener("click",touchEvent,false);
-		startgame();
-	}
+        var api = "http://127.0.0.1:3000/scores?scores=" + Scores;
+        $.ajax({url:api});
+    }
 
-	function startgame(){
-	 
-		var canvas = document.getElementById('game'),
-			ctx = canvas.getContext('2d');
-			
-			ballx = Math.floor(Math.random() * 300);
-			bally = Math.floor(Math.random() * 500);
-			ballr = Math.floor(Math.random() * 100);
+    function touchEvent(evt) {
+        var X = evt.clientX,
+            Y = evt.clientY,
+            tmp = (ballx - X) * (ballx - X) + (bally - Y) * (bally - Y);
 
-		canvas.width=480;
-		canvas.height=320;
+        console.log("Clicked : " + X + " , " + Y);
 
-		ctx.fillStyle=colors[counter % length];
-		ctx.beginPath();
-		ctx.arc(ballx,bally,ballr,0,Math.PI * 2,true);
-		ctx.fill();
+        if (tmp < ballr * ballr) {
+            Scores = Scores + (180 - ballr);
+            console.log("Good Hit! Your Scores : " + Scores);
+        }
+    }
 
-		if(counter>=10){
-				gameover();
-		}
-		else{
-				timeoutover = setTimeout(startgame,1000);
-				counter = counter+1;
-				
-			}
-	 }
+    function startgame() {
+        var canvas = document.getElementById('game'),
+            ctx = canvas.getContext('2d');
 
-	 function gameover(){
+        ballx = Math.floor(Math.random() * 300);
+        bally = Math.floor(Math.random() * 500);
+        ballr = Math.floor(Math.random() * 100);
 
-	 		console.log("Final Scores = "+Scores);
-	 }
+        canvas.width = 480;
+        canvas.height = 320;
 
-	 return{
-				start : start
-				
-		}
-	
-})();
+        ctx.fillStyle = colors[counter % length];
+        ctx.beginPath();
+        ctx.arc(ballx, bally, ballr, 0, Math.PI * 2, true);
+        ctx.fill();
+
+        if (counter >= 10) {
+            gameover();
+        } else {
+            setTimeout(startgame, 1000);
+            counter = counter + 1;
+        }
+    }
+
+    function start() {
+    	Scores = 0;
+        document.getElementById("main").addEventListener("click", touchEvent, false);
+        startgame();
+    }
+
+    return {
+        start : start
+    };
+}(document ,$));
 
 gameModule.start();
-
-
-

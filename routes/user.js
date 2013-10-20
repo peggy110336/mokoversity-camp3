@@ -3,7 +3,7 @@
  * GET users listing.
  */
 
-var score = [];
+var scores = [];
 
 exports.list = function(req, res){
   res.send("respond with a resource");
@@ -11,7 +11,7 @@ exports.list = function(req, res){
 
 exports.save = function(req, res){
 
-  scpre.push(reg.query.s);
+  scores.push(req.query.scores);
 
-  console.log("[SERVER] Your Score : " + score);
+  console.log("[SERVER] Your Scores : " + scores);
 };
