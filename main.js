@@ -1,7 +1,11 @@
 var gameModule =(function(){
 
 	var timeoutover,
-	    counter=0;
+	    counter=0,
+	    ballx,
+	    bally,
+	    ballr,
+	    Scores=0;
 
 	var colors = ['#ff0000', '#0000ff', 'yellow'];
    		length = colors.length;
@@ -13,8 +17,10 @@ var gameModule =(function(){
 
 		console.log("Clicked : "+X+" , "+Y);
 
-		if(tmp<ballr*ballr)
-			console.log("Good Hit!");
+		if(tmp<ballr*ballr){
+			Scores = Scores + (180-ballr);
+			console.log("Good Hit! Your Scores : "+Scores);
+		}
 	}
 
 	function start(){
@@ -25,9 +31,9 @@ var gameModule =(function(){
 	function startgame(){
 	 
 		var canvas = document.getElementById('game'),
-			ctx = canvas.getContext('2d'),
-			ballx = Math.floor(Math.random() * 300),
-			bally = Math.floor(Math.random() * 500),
+			ctx = canvas.getContext('2d');
+			ballx = Math.floor(Math.random() * 300);
+			bally = Math.floor(Math.random() * 500);
 			ballr = Math.floor(Math.random() * 100);
 
 		canvas.width=480;
@@ -50,7 +56,7 @@ var gameModule =(function(){
 
 	 function gameover(){
 
-	 		console.log("Counter = "+counter);
+	 		console.log("Final Scores = "+Scores);
 	 }
 
 	 return{
