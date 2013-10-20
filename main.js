@@ -14,13 +14,13 @@ var gameModule =(function(){
 		canvas.width=480;
 		canvas.height=320;
 
-		ctx.fillStyle='Red';
+		ctx.fillStyle=colors[counter % length];
 		ctx.beginPath();
 		ctx.arc(ballx,bally,ballr,0,Math.PI * 2,true);
 		ctx.fill();
 
 		if(counter>=10){
-
+				gameover();
 		}
 		else{
 				timeoutover = setTimeout(start,1000);
