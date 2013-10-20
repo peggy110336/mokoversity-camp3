@@ -9,8 +9,12 @@ var gameModule =(function(){
 	function touchEvent(evt){
 		var X = evt.clientX;
 			Y = evt.clientY;
+			tmp = (ballx - X)*(ballx - X)+(bally-Y)*(bally-Y);
 
 		console.log("Clicked : "+X+" , "+Y);
+
+		if(tmp<ballr*ballr)
+			console.log("Good Hit!");
 	}
 
 	function start(){
@@ -38,7 +42,7 @@ var gameModule =(function(){
 				gameover();
 		}
 		else{
-				timeoutover = setTimeout(start,1000);
+				timeoutover = setTimeout(startgame,1000);
 				counter = counter+1;
 				
 			}
